@@ -1,8 +1,10 @@
-module.exports.crud = function (test, opts) {
-    var ts = require('samizdat-ts')
+var ts = require('samizdat-ts')
+
+module.exports.test = function (name, opts) {
+    var test = opts.tape
     var db = opts.db
 
-    test('create and read new entries', function (t) {
+    test(name + ': create and read new entries', function (t) {
       t.plan(11)
 
       db.create('dit', 'deze', function (err, first) {
@@ -32,7 +34,7 @@ module.exports.crud = function (test, opts) {
       })
     })
 
-    test('create and update entry, read both versions, and check history', function (t) {
+    test(name + ': create and update entry, read both versions, and check history', function (t) {
       t.plan(10)
 
       db.create('qds74e412-000000000-entry', 'stuff', function (err) {
