@@ -1,4 +1,4 @@
-var spec = require('../spec')
+var spec = require('samizdat-spec')
 var rm = require('rimraf')
 
 rm.sync('/tmp/samizdat-fs')
