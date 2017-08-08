@@ -3,7 +3,7 @@ var rm = require('rimraf')
 
 rm.sync('/tmp/samizdat-fs')
 
-spec.test('filesystem', {
+spec.basic('filesystem', {
     tape: require('tape'),
     db: require('../fs')('/tmp/samizdat-fs')
 })

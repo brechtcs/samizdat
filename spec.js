@@ -1,6 +1,7 @@
+var pull = require('pull-stream')
 var ts = require('samizdat-ts')
 
-module.exports.test = function (name, opts) {
+module.exports.basic = function (name, opts) {
     var test = opts.tape
     var db = opts.db
 
@@ -62,5 +63,36 @@ module.exports.test = function (name, opts) {
           })
         }, 10)
       })
+    })
+}
+
+module.exports.stream = function (name, opts) {
+    var test = opts.tape
+    var db = opts.db
+
+    test(name + ': stream raw entries in and out', function (t) {
+      t.plan(5)
+
+      var entries = [
+        {key: '1k178m1unww-00000000000-arf', value: 'barf'},
+        {key: '1k178m1unx3-00000000000-yarf', value: 'gnarf'}
+      ]
+
+      pull(
+        pull.values(entries),
+        db.sink(function (err) {
+          t.notOk(err, 'Stream raw entries into database')
+
+          pull(
+            db.source(),
+            pull.collect(function (err, result) {
+              t.notOk(err, 'Stream raw entries out of database')
+              t.equal(result.length, entries.length, 'Create right number of entries')
+              t.deepEqual(result[0], entries[0], 'First entry is correct')
+              t.deepEqual(result[1], entries[1], 'Second entry is correct')
+            })
+          )
+        })
+      )
     })
 }
