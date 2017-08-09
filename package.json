@@ -7,12 +7,11 @@
     "test": "tape test/*.js | tap-spec"
   },
   "dependencies": {
-    "mkdirp": "^0.5.1",
-    "pull-glob": "^1.0.6",
-    "pull-stream": "^3.6.0",
     "samizdat-db": "^3.0.3",
+    "samizdat-fs": "^1.0.0",
     "samizdat-host": "^3.2.1",
-    "samizdat-spec": "^1.0.2"
+    "samizdat-spec": "^1.0.2",
+    "samizdat-ts": "^1.0.4"
   },
   "devDependencies": {
     "levelup": "^1.3.9",
