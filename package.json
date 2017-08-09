@@ -1,6 +1,6 @@
 {
   "name": "samizdat",
-  "version": "2.3.1",
+  "version": "3.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -9,7 +9,7 @@
   "dependencies": {
     "samizdat-db": "^3.0.3",
     "samizdat-fs": "^1.0.0",
-    "samizdat-host": "^3.2.1",
+    "samizdat-host": "^4.0.0",
     "samizdat-spec": "^1.0.2",
     "samizdat-ts": "^1.0.4"
   },
